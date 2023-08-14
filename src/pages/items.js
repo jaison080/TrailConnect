@@ -218,7 +218,7 @@ const Page = () => {
             >
               <Stack spacing={1}>
                 <Typography variant="h4">
-                  Customers
+                  Items
                 </Typography>
                 <Stack
                   alignItems="center"

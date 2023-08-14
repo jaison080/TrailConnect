@@ -19,8 +19,8 @@ export const items = [
     )
   },
   {
-    title: 'Customers',
-    path: '/customers',
+    title: 'Items',
+    path: '/items',
     icon: (
       <SvgIcon fontSize="small">
         <UsersIcon />
@@ -28,12 +28,30 @@ export const items = [
     )
   },
   {
-    title: 'Companies',
-    path: '/companies',
+    title: 'Warehouses',
+    path: '/warehouses',
     icon: (
       <SvgIcon fontSize="small">
         <ShoppingBagIcon />
       </SvgIcon>
+    )
+  },
+  {
+    title: 'Locations',
+    path: '/locations',
+    icon: (
+      <SvgIcon fontSize="small">
+        <ShoppingBagIcon />
+      </SvgIcon>
+    )
+  },
+  {
+    title: 'Transports',
+    path: '/transports',
+    icon: (
+      <SvgIcon fontSize="small">
+      <UsersIcon />
+    </SvgIcon>
     )
   },
   {
@@ -54,31 +72,31 @@ export const items = [
       </SvgIcon>
     )
   },
-  {
-    title: 'Login',
-    path: '/auth/login',
-    icon: (
-      <SvgIcon fontSize="small">
-        <LockClosedIcon />
-      </SvgIcon>
-    )
-  },
-  {
-    title: 'Register',
-    path: '/auth/register',
-    icon: (
-      <SvgIcon fontSize="small">
-        <UserPlusIcon />
-      </SvgIcon>
-    )
-  },
-  {
-    title: 'Error',
-    path: '/404',
-    icon: (
-      <SvgIcon fontSize="small">
-        <XCircleIcon />
-      </SvgIcon>
-    )
-  }
+  // {
+  //   title: 'Login',
+  //   path: '/auth/login',
+  //   icon: (
+  //     <SvgIcon fontSize="small">
+  //       <LockClosedIcon />
+  //     </SvgIcon>
+  //   )
+  // },
+  // {
+  //   title: 'Register',
+  //   path: '/auth/register',
+  //   icon: (
+  //     <SvgIcon fontSize="small">
+  //       <UserPlusIcon />
+  //     </SvgIcon>
+  //   )
+  // },
+  // {
+  //   title: 'Error',
+  //   path: '/404',
+  //   icon: (
+  //     <SvgIcon fontSize="small">
+  //       <XCircleIcon />
+  //     </SvgIcon>
+  //   )
+  // }
 ];
