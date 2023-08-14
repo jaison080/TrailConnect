@@ -15,6 +15,7 @@ import {
 import { Layout as DashboardLayout } from "src/layouts/dashboard/layout";
 import { CompanyCard } from "src/sections/companies/company-card";
 import { CompaniesSearch } from "src/sections/companies/companies-search";
+import CustomTitle from "src/utils/customTitle";
 
 const companies = [
   {
@@ -75,9 +76,7 @@ const companies = [
 
 const Page = () => (
   <>
-    <Head>
-      <title>Companies | TrailConnect</title>
-    </Head>
+    <CustomTitle title="Warehouse Details" />
     <Box
       component="main"
       sx={{
@@ -89,7 +88,7 @@ const Page = () => (
         <Stack spacing={3}>
           <Stack direction="row" justifyContent="space-between" spacing={4}>
             <Stack spacing={1}>
-              <Typography variant="h4">Warehouses</Typography>
+              <Typography variant="h4">Warehouse Details</Typography>
               <Stack alignItems="center" direction="row" spacing={1}>
                 <Button
                   color="inherit"

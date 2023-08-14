@@ -193,7 +193,7 @@ const Page = () => {
 
   return (
     <>
-      <CustomTitle title="Items" />
+      <CustomTitle title="Drivers" />
       <Box
         component="main"
         sx={{
@@ -205,7 +205,7 @@ const Page = () => {
           <Stack spacing={3}>
             <Stack direction="row" justifyContent="space-between" spacing={4}>
               <Stack spacing={1}>
-                <Typography variant="h4">Items</Typography>
+                <Typography variant="h4">Drivers</Typography>
                 <Stack alignItems="center" direction="row" spacing={1}>
                   <Button
                     color="inherit"
