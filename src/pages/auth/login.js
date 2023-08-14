@@ -158,6 +158,55 @@ const Page = () => {
                     value={formik.values.password}
                   />
                 </Stack>
+                <div className="radio-buttons" style={{ display: 'flex', gap: '10px' }}>
+                  <label htmlFor="home" className="radio-label" style={{ display: 'flex', alignItems: 'center' }}>
+                    <input
+                      name="connected"
+                      id="home"
+                      type="radio"
+                      className="peer/home"
+                      value="first"
+                      onChange={(e) => setDone(e.target.value)}
+                    />
+                    <span
+                      className="radio-button"
+                      style={{
+                        backgroundColor: 'white',
+                        borderRadius: '4px',
+                        padding: '5px 10px',
+                        color: 'indigo',
+                        cursor: 'pointer',
+                        transition: 'background-color 0.2s',
+                      }}
+                    >
+                      Log In as Admin
+                    </span>
+                  </label>
+  
+                  <label htmlFor="no" className="radio-label" style={{ display: 'flex', alignItems: 'center' }}>
+                    <input
+                      name="connected"
+                      id="no"
+                      type="radio"
+                      className="peer/no"
+                      value="second"
+                      onChange={(e) => setDone(e.target.value)}
+                    />
+                    <span
+                      className="radio-button"
+                      style={{
+                        backgroundColor: 'white',
+                        borderRadius: '4px',
+                        padding: '5px 10px',
+                        color: 'indigo',
+                        cursor: 'pointer',
+                        transition: 'background-color 0.2s',
+                      }}
+                    >
+                      Log In as Driver
+                    </span>
+                  </label>
+                </div>
                 <FormHelperText sx={{ mt: 1 }}>
                   Optionally you can skip.
                 </FormHelperText>
