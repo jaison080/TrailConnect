@@ -73,19 +73,19 @@ export const SideNav = (props) => {
               >
                 TrailConnect
               </Typography>
-              <Typography
+              {/* <Typography
                 color="neutral.400"
                 variant="body2"
               >
                 Production
-              </Typography>
+              </Typography> */}
             </div>
-            <SvgIcon
+            {/* <SvgIcon
               fontSize="small"
               sx={{ color: 'neutral.500' }}
             >
               <ChevronUpDownIcon />
-            </SvgIcon>
+            </SvgIcon> */}
           </Box>
         </Box>
         <Divider sx={{ borderColor: 'neutral.700' }} />
@@ -130,7 +130,7 @@ export const SideNav = (props) => {
             py: 3
           }}
         >
-          <Typography
+          {/* <Typography
             color="neutral.100"
             variant="subtitle2"
           >
@@ -141,7 +141,7 @@ export const SideNav = (props) => {
             variant="body2"
           >
             Check out our Pro solution template.
-          </Typography>
+          </Typography> */}
           <Box
             sx={{
               display: 'flex',
@@ -158,7 +158,7 @@ export const SideNav = (props) => {
               src="/assets/trailconnect.png"
             />
           </Box>
-          <Button
+          {/* <Button
             component="a"
             endIcon={(
               <SvgIcon fontSize="small">
@@ -171,7 +171,7 @@ export const SideNav = (props) => {
             variant="contained"
           >
             Pro Live Preview
-          </Button>
+          </Button> */}
         </Box>
       </Box>
     </Scrollbar>

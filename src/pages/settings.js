@@ -1,28 +1,22 @@
-import Head from 'next/head';
-import { Box, Container, Stack, Typography } from '@mui/material';
-import { SettingsNotifications } from 'src/sections/settings/settings-notifications';
-import { SettingsPassword } from 'src/sections/settings/settings-password';
-import { Layout as DashboardLayout } from 'src/layouts/dashboard/layout';
+import { Box, Container, Stack, Typography } from "@mui/material";
+import { SettingsNotifications } from "src/sections/settings/settings-notifications";
+import { SettingsPassword } from "src/sections/settings/settings-password";
+import { Layout as DashboardLayout } from "src/layouts/dashboard/layout";
+import CustomTitle from "src/utils/customTitle";
 
 const Page = () => (
   <>
-    <Head>
-      <title>
-        Settings | TrailConnect
-      </title>
-    </Head>
+    <CustomTitle title="Settings" />
     <Box
       component="main"
       sx={{
         flexGrow: 1,
-        py: 8
+        py: 8,
       }}
     >
       <Container maxWidth="lg">
         <Stack spacing={3}>
-          <Typography variant="h4">
-            Settings
-          </Typography>
+          <Typography variant="h4">Settings</Typography>
           <SettingsNotifications />
           <SettingsPassword />
         </Stack>
@@ -31,10 +25,6 @@ const Page = () => (
   </>
 );
 
-Page.getLayout = (page) => (
-  <DashboardLayout>
-    {page}
-  </DashboardLayout>
-);
+Page.getLayout = (page) => <DashboardLayout>{page}</DashboardLayout>;
 
 export default Page;
