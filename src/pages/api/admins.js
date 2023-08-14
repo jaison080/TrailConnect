@@ -1,6 +1,5 @@
 import { PrismaClient } from '@prisma/client'
 import isEmail from 'validator/lib/isEmail';
-import isMobilePhone from 'validator/lib/isMobilePhone';
 import { required, validate } from '../../utils/validationArray';
 import { hash } from 'bcrypt';
 
@@ -10,41 +9,38 @@ export default async function handler(req, res) {
 
     switch (req.method) {
         case 'GET':
-            return getDrivers(req, res);
+            return getAdmins(req, res);
         case 'POST':
-            return createDriver(req, res);
+            return createAdmin(req, res);
         default:
             return res.status(405).json({ message: 'Method not allowed' });
     }
 
 }
 
-async function getDrivers(req, res) {
-    const drivers = await prisma.driver.findMany({
+async function getAdmins(req, res) {
+    const admins = await prisma.admin.findMany({
         select: {
             ID: true,
             Name: true,
-            Phone: true,
             Email: true
         }
     });
     return res.status(200).json({
-        drivers: drivers,
+        admins: admins,
         message: 'OK'
     });
 }
 
-async function createDriver(req, res) {
-    const { Name, Phone, Email, Password } = req.body;
+async function createAdmin(req, res) {
+    const { Name, Email, Password } = req.body;
 
     const validation = validate([
-        [required(Name || ""), 'Name is required'],
-        [required(Email || ""), 'Email is required'],
-        [required(Phone || ""), 'Phone is required'],
-        [required(Password || ""), 'Password is required'],
-        [isEmail(Email || ""), 'Invalid Email'],
-        [isMobilePhone(Phone || ""), 'Invalid Phone Number'],
-        [!(await prisma.driver.findUnique({
+        [required(Name), 'Name is required'],
+        [required(Email), 'Email is required'],
+        [required(Password), 'Password is required'],
+        [isEmail(Email), 'Invalid Email'],
+        [!(await prisma.admin.findUnique({
             where: {
                 Email: Email
             }
@@ -60,16 +56,21 @@ async function createDriver(req, res) {
 
     const hashedPassword = await hash(Password, 10);
 
-    const driver = await prisma.driver.create({
+    const admin = await prisma.admin.create({
         data: {
             Name,
-            Phone,
             Email,
             Password_Hash: hashedPassword
+        },
+        select: {
+            ID: true,
+            Name: true,
+            Email: true
         }
+        
     });
     return res.status(200).json({
-        driver: driver,
+        admin: admin,
         message: 'OK'
     });
 }
