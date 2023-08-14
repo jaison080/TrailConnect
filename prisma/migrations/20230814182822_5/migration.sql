@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "Item" ALTER COLUMN "image" SET DATA TYPE VARCHAR(10000);

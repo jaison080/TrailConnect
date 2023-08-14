@@ -11,16 +11,40 @@ datasource db {
 }
 
 model Driver {
-  ID      String  @id @default(uuid())
-  Name    String  @db.VarChar(255)
-  Email   String  @unique @db.VarChar(255)
-  Phone   String? @db.VarChar(15)
-  Password_Hash String @db.VarChar(255)
+  ID            String  @id @default(uuid())
+  Name          String  @db.VarChar(255)
+  Email         String  @unique @db.VarChar(255)
+  Phone         String? @db.VarChar(15)
+  Password_Hash String  @db.VarChar(255)
 }
 
 model Admin {
-  ID      String  @id @default(uuid())
-  Name    String  @db.VarChar(255)
-  Email   String  @unique @db.VarChar(255)
+  ID            String @id @default(uuid())
+  Name          String @db.VarChar(255)
+  Email         String @unique @db.VarChar(255)
   Password_Hash String @db.VarChar(255)
+}
+
+model Warehouse {
+  ID              String            @id @default(uuid())
+  location        String            @db.VarChar(255)
+  name            String            @unique @db.VarChar(255)
+  Warehouse_items Warehouse_items[]
+}
+
+model Item {
+  ID              String            @id @default(uuid())
+  image           String            @db.VarChar(10000)
+  name            String            @unique @db.VarChar(255)
+  priority        Int
+  Warehouse_items Warehouse_items[]
+}
+
+model Warehouse_items {
+  ID           String    @id @default(uuid())
+  warehouse    Warehouse @relation(fields: [warehouse_id], references: [ID])
+  item         Item      @relation(fields: [item_id], references: [ID])
+  warehouse_id String
+  item_id      String
+  count        Int
 }
