@@ -1,4 +1,7 @@
 import { PrismaClient } from '@prisma/client'
+import isEmail from 'validator/lib/isEmail';
+import isMobilePhone from 'validator/lib/isMobilePhone';
+import { required, validate } from '../../utils/validationArray';
 
 const prisma = new PrismaClient()
 
@@ -25,6 +28,23 @@ async function getDrivers(req, res) {
 
 async function createDriver(req, res) {
     const { Name, Phone, Email } = req.body;
+
+    const validation = validate([
+        [required(Name), 'Name is required'],
+        [required(Email), 'Email is required'],
+        [required(Phone), 'Phone is required'],
+        [isEmail(Email), 'Invalid Email'],
+        [isMobilePhone(Phone), 'Invalid Phone Number'],
+        [!prisma.driver.findUnique({ where: { Email } }), 'Email already exists']
+    ]);
+
+    if (!validation.isValid) {
+        return res.status(400).json({
+            message: 'Validation failed',
+            errors: validation.errors
+        });
+    }
+
     const driver = await prisma.driver.create({
         data: {
             Name,
