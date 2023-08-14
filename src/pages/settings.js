@@ -1,4 +1,3 @@
-import Head from "next/head";
 import { Box, Container, Stack, Typography } from "@mui/material";
 import { SettingsNotifications } from "src/sections/settings/settings-notifications";
 import { SettingsPassword } from "src/sections/settings/settings-password";
