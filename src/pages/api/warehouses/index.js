@@ -1,7 +1,7 @@
 import { PrismaClient } from '@prisma/client'
 import isEmail from 'validator/lib/isEmail';
 import isMobilePhone from 'validator/lib/isMobilePhone';
-import { required, validate } from '../../utils/validationArray';
+import { required, validate } from '../../../utils/validationArray';
 import { hash } from 'bcrypt';
 
 const prisma = new PrismaClient()

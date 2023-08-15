@@ -11,11 +11,12 @@ datasource db {
 }
 
 model Driver {
-  ID            String  @id @default(uuid())
-  Name          String  @db.VarChar(255)
-  Email         String  @unique @db.VarChar(255)
-  Phone         String? @db.VarChar(15)
-  Password_Hash String  @db.VarChar(255)
+  ID            String      @id @default(uuid())
+  Name          String      @db.VarChar(255)
+  Email         String      @unique @db.VarChar(255)
+  Phone         String?     @db.VarChar(15)
+  Password_Hash String      @db.VarChar(255)
+  Transport     Transport[]
 }
 
 model Admin {
@@ -30,6 +31,9 @@ model Warehouse {
   location        String            @db.VarChar(255)
   name            String            @unique @db.VarChar(255)
   Warehouse_items Warehouse_items[]
+  Transport1      Transport[]       @relation("from_warehouse")
+  Transport2      Transport[]       @relation("to_warehouse")
+  Transport_steps Transport_steps[]
 }
 
 model Item {
@@ -50,23 +54,28 @@ model Warehouse_items {
 }
 
 model Transport {
-  ID            String  @id @default(uuid())
-  driver        Driver  @relation(fields: [driver_id], references: [ID])
-  driver_id     String
-  warehouse     Warehouse @relation(fields: [warehouse_id], references: [ID])
-  warehouse_id  String
-  items         Transport_items[]
-  status        String
-  date          DateTime
+  ID              String            @id @default(uuid())
+  driver          Driver            @relation(fields: [driver_id], references: [ID])
+  driver_id       String
+  from_warehouse  Warehouse?        @relation("from_warehouse", fields: [from_wid], references: [ID])
+  to_warehouse    Warehouse?        @relation("to_warehouse", fields: [to_wid], references: [ID])
+  from_wid        String
+  to_wid          String
+  status          String
+  date            DateTime
+  Transport_steps Transport_steps[]
 }
 
 model Transport_steps {
-  ID            String  @id @default(uuid())
-  transport     Transport @relation(fields: [transport_id], references: [ID])
-  transport_id  String
-  warehouse     Warehouse @relation(fields: [warehouse_id], references: [ID])
-  warehouse_id  String
-  status        String
-  
-  date          DateTime
+  ID                String    @id @default(uuid())
+  transport         Transport @relation(fields: [transport_id], references: [ID])
+  transport_id      String
+  warehouse         Warehouse @relation(fields: [warehouse_id], references: [ID])
+  warehouse_id      String
+  status            String
+  current_latitude  String
+  current_longitude String
+  Start_location    String
+  End_location      String
+  date              DateTime
 }
