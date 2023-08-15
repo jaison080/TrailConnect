@@ -48,3 +48,25 @@ model Warehouse_items {
   item_id      String
   count        Int
 }
+
+model Transport {
+  ID            String  @id @default(uuid())
+  driver        Driver  @relation(fields: [driver_id], references: [ID])
+  driver_id     String
+  warehouse     Warehouse @relation(fields: [warehouse_id], references: [ID])
+  warehouse_id  String
+  items         Transport_items[]
+  status        String
+  date          DateTime
+}
+
+model Transport_steps {
+  ID            String  @id @default(uuid())
+  transport     Transport @relation(fields: [transport_id], references: [ID])
+  transport_id  String
+  warehouse     Warehouse @relation(fields: [warehouse_id], references: [ID])
+  warehouse_id  String
+  status        String
+  
+  date          DateTime
+}
